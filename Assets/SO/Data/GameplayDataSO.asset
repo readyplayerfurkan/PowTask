@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef29a8d98a0ef8547bc34e323077b1a3, type: 3}
+  m_Name: GameplayDataSO
+  m_EditorClassIdentifier: 
+  enemySpawnTime: 0.7200022
+  spawnTimeConstant: 3
+  spawnTimeDecreaseRate: 0.01
+  enemyHealthChangeInterval: 1
+  remainTime: 73
+  gameTime: 300
+  timer: 3
+  enemyHealthIncreaseInterval: 15
+  enemyContainer: {fileID: 0}
+  isGamePaused: 0

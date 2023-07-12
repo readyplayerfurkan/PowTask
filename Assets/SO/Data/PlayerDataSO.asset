@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 682e02cfd0baee748afb5065530be928, type: 3}
+  m_Name: PlayerDataSO
+  m_EditorClassIdentifier: 
+  bulletPrefab: {fileID: 4499061205907149370, guid: f286481dde606a645a8da867c8bbc3c5, type: 3}
+  playerPrefab: {fileID: 8593393125543565400, guid: d90097bf5d2bd5c43ad2f649198a819a, type: 3}
+  bulletRotation: {x: 0, y: 0.7869883, z: 0, w: 0.6169679}
+  playerBaseHealth: 40
+  playerHealth: 0
+  damage: 1.4641001
+  damageConstant: 1
+  fireInterval: 2
+  currentFireInterval: 1.3999999
+  bulletAmount: 1
+  currentBulletAmount: 4
+  isForthSkillActive: 1
+  goldAmount: 356
+  onPlayerHealthChange: {fileID: 11400000, guid: 8012b82863cc893489cc769dfde378fc, type: 2}

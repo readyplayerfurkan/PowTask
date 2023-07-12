@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: bdc5b3a4de187f846b7d6814c959347b
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - playerDataSo: {fileID: 11400000, guid: 51d652e825736eb4ab7e31bfbd1a75ef, type: 2}
+  - onGameOverEvent: {fileID: 11400000, guid: 48e47ef671c1ce4479f7d5ee631deb61, type: 2}
+  - onPlayerTakeDamage: {fileID: 11400000, guid: 29116dbd5afa135458da4e7c40853a40, type: 2}
+  - onPlayerHealthChange: {fileID: 11400000, guid: 8012b82863cc893489cc769dfde378fc, type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
