@@ -10,7 +10,7 @@ namespace PowTask
 
         public void Raise(T t)
         {
-            for (int i = listeners.Count; i >= 0; i--)
+            for (int i = listeners.Count - 1; i >= 0; i--)
             {
                 listeners[i].OnEventRaised(t);
             }

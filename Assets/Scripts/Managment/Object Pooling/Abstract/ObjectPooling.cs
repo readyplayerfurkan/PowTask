@@ -12,8 +12,7 @@ namespace PowTask.Management.ObjectPooling
         [SerializeField] protected int amountOfObject;
         protected T _objectInstantiate;
         protected Queue<T> _objectPool = new Queue<T>();
-        
-        
+
         protected void CreateObjectsFirstStart()
         {
             for (int i = 0; i < amountOfObject; i++)
@@ -22,6 +21,12 @@ namespace PowTask.Management.ObjectPooling
                 _objectInstantiate.GameObject().SetActive(false);
                 _objectPool.Enqueue(_objectInstantiate);
             }
+        }
+
+        protected void DeactiveAObject(T gameObj)
+        {
+            gameObj.GameObject().SetActive(false);
+            _objectPool.Enqueue(gameObj);
         }
         
         protected T GetObjectFromPool()
@@ -38,7 +43,11 @@ namespace PowTask.Management.ObjectPooling
         {
             foreach (T poolingObject in _objectPool)
             {
-                _objectPool.Enqueue(poolingObject);
+                if (poolingObject.GameObject().activeInHierarchy)
+                {
+                    poolingObject.GameObject().SetActive(false);
+                    _objectPool.Enqueue(poolingObject);
+                }
             }
         }
 

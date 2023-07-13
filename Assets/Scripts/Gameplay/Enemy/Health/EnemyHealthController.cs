@@ -1,3 +1,4 @@
+using System;
 using PowTask.ScriptableScripts;
 using UnityEngine;
 
@@ -9,13 +10,8 @@ namespace PowTask.Gameplay.Enemy
         [SerializeField] private PlayerDataSO playerDataSo;
         [SerializeField] private GameplayDataSO gameplayDataSo;
         [SerializeField] private GameEvent onEarnGold;
+        [SerializeField] private GameObjectGenericGameEvent onEnemyDie;
         private float _health;
-
-        private void Start()
-        {
-            enemyDataSo.EnemyHealth = enemyDataSo.EnemyGameTimeHealth;
-            _health = enemyDataSo.EnemyHealth;
-        }
 
         public void DecreaseHealth(float damage)
         {
@@ -23,8 +19,14 @@ namespace PowTask.Gameplay.Enemy
             if (_health <= 0)
             {
                 EarnGold();
-                Destroy(gameObject);
+                onEnemyDie.Raise(gameObject);
             }
+        }
+
+        private void OnEnable()
+        {
+            enemyDataSo.EnemyHealth = enemyDataSo.EnemyGameTimeHealth;
+            _health = enemyDataSo.EnemyHealth;
         }
 
         public void OnGameStart()
@@ -42,9 +44,8 @@ namespace PowTask.Gameplay.Enemy
             if (gameplayDataSo.timer != gameplayDataSo.enemyHealthIncreaseInterval) return;
            
             enemyDataSo.EnemyGameTimeHealth += gameplayDataSo.enemyHealthChangeInterval;
-
         }
-        
+
         private void EarnGold()
         {
             playerDataSo.GoldAmount += enemyDataSo.EnemyGoldAmount;

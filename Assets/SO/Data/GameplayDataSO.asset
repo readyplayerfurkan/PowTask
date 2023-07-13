@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: GameplayDataSO
   m_EditorClassIdentifier: 
   enemySpawnTime: 0.7200022
-  spawnTimeConstant: 3
+  spawnTimeConstant: 10
   spawnTimeDecreaseRate: 0.01
   enemyHealthChangeInterval: 1
   remainTime: 73

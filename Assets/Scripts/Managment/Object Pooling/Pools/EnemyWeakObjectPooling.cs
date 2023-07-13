@@ -1,10 +1,12 @@
 using System.Collections;
+using PowTask.Management;
+using PowTask.Management.ObjectPooling;
 using PowTask.ScriptableScripts;
 using UnityEngine;
 
-namespace PowTask.Management.ObjectPooling
+namespace PowTask
 {
-    public class EnemyStrongObjectPooling : ObjectPooling<GameObject>
+    public class EnemyWeakObjectPooling : ObjectPooling<GameObject>
     {
         [SerializeField] private GameplayDataSO gameplayDataSo;
 
@@ -64,6 +66,7 @@ namespace PowTask.Management.ObjectPooling
         {
             yield return new WaitUntil(() => _sceneManager.sceneType == SceneType.Game);
 
+            yield return new WaitForSeconds(5f);
             while (true)
             {
                 int randomSpawnerNumber = Random.Range(1, 5);

@@ -20,7 +20,7 @@ namespace PowTask.Management
         private void Start()
         {
             Debug.LogError("Oyun başlatıldı.");
-            Debug.LogError(Application.persistentDataPath);
+
             gameplayDataSo.remainTime = gameplayDataSo.gameTime;
             gameplayDataSo.timer = 0;
             currentTimeSequence = TimeCountdown();

@@ -52,5 +52,11 @@ namespace PowTask.Gameplay.Enemy
         {
             enemyDataSo.IsEnemyCanMove = true;
         }
+
+        public void OnEnemyDie(GameObject poolingObject)
+        {
+            Rigidbody poolingObjectRigidbody = poolingObject.GetComponent<Rigidbody>();
+            poolingObjectRigidbody.velocity = Vector3.zero;
+        }
     }
 }
