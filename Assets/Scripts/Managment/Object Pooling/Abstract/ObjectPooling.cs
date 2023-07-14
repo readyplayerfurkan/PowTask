@@ -1,4 +1,3 @@
-using System.Collections;
 using UnityEngine;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -8,54 +7,54 @@ namespace PowTask.Management.ObjectPooling
 {
     public abstract class ObjectPooling<T> : MonoBehaviour where T : Object 
     {
-        [SerializeField] protected T objectPrefab;
-        [SerializeField] protected int amountOfObject;
-        protected T _objectInstantiate;
-        protected Queue<T> _objectPool = new Queue<T>();
+        [SerializeField] protected T itemPrefab;
+        [SerializeField] protected int amountOfItem;
+        protected T _itemInstantiate;
+        protected Queue<T> _passiveObjectPool = new Queue<T>();
+        protected List<T> _activeObjectPool = new List<T>();
 
-        protected void CreateObjectsFirstStart()
+        protected void ObjectPool()
         {
-            for (int i = 0; i < amountOfObject; i++)
+            for (int i = 0; i < amountOfItem; i++)
             {
-                _objectInstantiate = Instantiate(objectPrefab);
-                _objectInstantiate.GameObject().SetActive(false);
-                _objectPool.Enqueue(_objectInstantiate);
+                _itemInstantiate = Instantiate(itemPrefab);
+                _itemInstantiate.GameObject().SetActive(false);
+                _passiveObjectPool.Enqueue(_itemInstantiate);
             }
-        }
-
-        protected void DeactiveAObject(T gameObj)
-        {
-            gameObj.GameObject().SetActive(false);
-            _objectPool.Enqueue(gameObj);
         }
         
-        protected T GetObjectFromPool()
+        protected void ReleaseItem(T item)
         {
-            foreach (T poolingObject in _objectPool)
-            {
-                if (!poolingObject.GameObject().activeInHierarchy)
-                    return poolingObject;
-            }
-            return null;
+            if (!_activeObjectPool.Contains(item)) return;
+
+            _activeObjectPool.Remove(item);
+            item.GameObject().SetActive(false);
+            _passiveObjectPool.Enqueue(item);
         }
 
-        protected void DeactiveAllObject()
+        protected void ReleaseAll()
         {
-            foreach (T poolingObject in _objectPool)
+            if (_activeObjectPool.Count == 0) return;
+
+            for (int i = 0; i < _activeObjectPool.Count - 1; i++)
             {
-                if (poolingObject.GameObject().activeInHierarchy)
-                {
-                    poolingObject.GameObject().SetActive(false);
-                    _objectPool.Enqueue(poolingObject);
-                }
+                Debug.Log("ReleaseAll is triggered.");
+                ReleaseItem(_activeObjectPool[i]);
             }
         }
 
-        protected IEnumerator FalseGameObject(T poolingObject,float time)
+        protected T GetItem()
         {
-            yield return new WaitForSeconds(time);
-            gameObject.GameObject().SetActive(false);
-            _objectPool.Enqueue(poolingObject);
+            T item = _passiveObjectPool.Count != 0 ? _passiveObjectPool.Dequeue() : CreateItem();
+            _activeObjectPool.Add(item);
+            item.GameObject().SetActive(true);
+            return item;
+        }
+        
+        protected T CreateItem()
+        {
+            T newItem = Instantiate(_itemInstantiate);
+            return newItem;
         }
     }
 }

@@ -19,19 +19,19 @@ namespace PowTask.Management.ObjectPooling
             _sceneManager = SceneManagement.Instance;
             _spawnCorotuine = SpawnSequance();
             StartCoroutine(_spawnCorotuine);
-            CreateObjectsFirstStart();
+            ObjectPool();
         }
         
         public void OnGameOver()
         {
             StopCoroutine(_spawnCorotuine);
-            DeactiveAllObject();
+            ReleaseAll();
         }
 
         public void OnGameWin()
         {
             StopCoroutine(_spawnCorotuine);
-            DeactiveAllObject();
+            ReleaseAll();
         }
 
         public void OnGameRestart()
@@ -57,7 +57,7 @@ namespace PowTask.Management.ObjectPooling
 
         public void OnEnemyDied(GameObject poolingObject)
         {
-            DeactiveAObject(poolingObject);
+            ReleaseItem(poolingObject);
         }
         
         private IEnumerator SpawnSequance()
@@ -98,14 +98,8 @@ namespace PowTask.Management.ObjectPooling
         
         private void SpawnEnemy(Vector3 randomPos)
         {
-            _objectInstantiate = GetObjectFromPool();
-            if (_objectInstantiate != null)
-            {
-                _objectPool.Dequeue();
-                _objectInstantiate.transform.position = randomPos;
-                _objectInstantiate.SetActive(true);
-                StartCoroutine(FalseGameObject(_objectInstantiate, gameplayDataSo.gameTime));
-            }
+            _itemInstantiate = GetItem();
+            _itemInstantiate.transform.position = randomPos;
         }
     }
 }

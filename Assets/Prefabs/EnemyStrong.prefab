@@ -23,7 +23,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4689786493642089430
 Transform:
   m_ObjectHideFlags: 0
@@ -146,7 +146,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyDataSo: {fileID: 11400000, guid: 65604db6bf4891a4f909d9f5dc30615c, type: 2}
-  onEnemyDied: {fileID: 11400000, guid: 1db80a8424ec73c4b9e0fbc0a0884c4a, type: 2}
 --- !u!114 &-874118018195618089
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -163,7 +162,6 @@ MonoBehaviour:
   playerDataSo: {fileID: 11400000, guid: 51d652e825736eb4ab7e31bfbd1a75ef, type: 2}
   gameplayDataSo: {fileID: 11400000, guid: 8634da7b403f19b4d92c382e0227e1ae, type: 2}
   onEarnGold: {fileID: 11400000, guid: 71845601099879f4da92ee886ff8d02d, type: 2}
-  onEnemyDie: {fileID: 11400000, guid: 1db80a8424ec73c4b9e0fbc0a0884c4a, type: 2}
 --- !u!114 &-6835336815693679799
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -176,4 +174,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b880825e6f8717144acee72724c30d2c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyRb: {fileID: 4974104367069505354}
+  enemyHealthController: {fileID: -874118018195618089}
+  enemyMovementHandler: {fileID: 1356463605689557163}
+  enemyAttackHandler: {fileID: -8498282294860557988}
+  onEnemyDied: {fileID: 11400000, guid: 1db80a8424ec73c4b9e0fbc0a0884c4a, type: 2}

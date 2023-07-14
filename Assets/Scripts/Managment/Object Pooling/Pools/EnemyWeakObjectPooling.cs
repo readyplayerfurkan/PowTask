@@ -1,10 +1,8 @@
 using System.Collections;
-using PowTask.Management;
-using PowTask.Management.ObjectPooling;
 using PowTask.ScriptableScripts;
 using UnityEngine;
 
-namespace PowTask
+namespace PowTask.Management.ObjectPooling
 {
     public class EnemyWeakObjectPooling : ObjectPooling<GameObject>
     {
@@ -21,19 +19,19 @@ namespace PowTask
             _sceneManager = SceneManagement.Instance;
             _spawnCorotuine = SpawnSequance();
             StartCoroutine(_spawnCorotuine);
-            CreateObjectsFirstStart();
+            ObjectPool();
         }
         
         public void OnGameOver()
         {
             StopCoroutine(_spawnCorotuine);
-            DeactiveAllObject();
+            ReleaseAll();
         }
 
         public void OnGameWin()
         {
             StopCoroutine(_spawnCorotuine);
-            DeactiveAllObject();
+            ReleaseAll();
         }
 
         public void OnGameRestart()
@@ -59,14 +57,13 @@ namespace PowTask
 
         public void OnEnemyDied(GameObject poolingObject)
         {
-            DeactiveAObject(poolingObject);
+            ReleaseItem(poolingObject);
         }
         
         private IEnumerator SpawnSequance()
         {
             yield return new WaitUntil(() => _sceneManager.sceneType == SceneType.Game);
 
-            yield return new WaitForSeconds(5f);
             while (true)
             {
                 int randomSpawnerNumber = Random.Range(1, 5);
@@ -101,14 +98,8 @@ namespace PowTask
         
         private void SpawnEnemy(Vector3 randomPos)
         {
-            _objectInstantiate = GetObjectFromPool();
-            if (_objectInstantiate != null)
-            {
-                _objectPool.Dequeue();
-                _objectInstantiate.transform.position = randomPos;
-                _objectInstantiate.SetActive(true);
-                StartCoroutine(FalseGameObject(_objectInstantiate, gameplayDataSo.gameTime));
-            }
+            _itemInstantiate = GetItem();
+            _itemInstantiate.transform.position = randomPos;
         }
     }
 }

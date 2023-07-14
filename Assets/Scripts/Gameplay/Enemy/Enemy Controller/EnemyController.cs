@@ -1,26 +1,31 @@
-using System;
-using UnityEngine;
 using PowTask.Gameplay.Enemy;
+using UnityEngine;
 
 namespace PowTask
 {
     public class EnemyController : MonoBehaviour
     {
-        [SerializeField] private Rigidbody enemyRb;
+        [SerializeField] private EnemyHealthController enemyHealthController;
+        [SerializeField] private EnemyMovementHandler enemyMovementHandler;
+        [SerializeField] private EnemyAttackHandler enemyAttackHandler;
+        [SerializeField] private GameObjectGenericGameEvent onEnemyDied;
 
-        private void Start()
+        private void OnEnable()
         {
-            
+            enemyHealthController.OnHealthOver += Die;
+            enemyAttackHandler.OnHealthOver += Die;
         }
 
-        public void OnEnemyTakeDamage()
+        private void OnDisable()
         {
-            
+            enemyHealthController.OnHealthOver -= Die;
+            enemyAttackHandler.OnHealthOver -= Die;
         }
 
-        public void OnEnemyDie(GameObject poolingObject)
+        public void Die()
         {
-            
+            enemyMovementHandler.ResetVelocity();
+            onEnemyDied.Raise(gameObject);
         }
     }
 }

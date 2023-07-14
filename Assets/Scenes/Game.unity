@@ -666,10 +666,10 @@ MonoBehaviour:
   response:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1356463605689557163, guid: 624036968860efe42b8ccacc979ac9ac, type: 3}
-        m_TargetAssemblyTypeName: PowTask.Gameplay.Enemy.EnemyMovementHandler, Assembly-CSharp
-        m_MethodName: OnEnemyDie
-        m_Mode: 0
+      - m_Target: {fileID: -6835336815693679799, guid: 624036968860efe42b8ccacc979ac9ac, type: 3}
+        m_TargetAssemblyTypeName: PowTask.EnemyController, Assembly-CSharp
+        m_MethodName: Die
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -3843,8 +3843,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5fec1dd1e87f5a4b8f09d0de60be45a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectPrefab: {fileID: 8540067740802239522, guid: 624036968860efe42b8ccacc979ac9ac, type: 3}
-  amountOfObject: 10
+  itemPrefab: {fileID: 8540067740802239522, guid: 624036968860efe42b8ccacc979ac9ac, type: 3}
+  amountOfItem: 10
   gameplayDataSo: {fileID: 11400000, guid: 8634da7b403f19b4d92c382e0227e1ae, type: 2}
 --- !u!114 &1205367124
 MonoBehaviour:
@@ -4739,8 +4739,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca731c6ce734b2540900d46d71b81367, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectPrefab: {fileID: 7546289402474254726, guid: d48640c7841bd4441abb6418d264cebe, type: 3}
-  amountOfObject: 10
+  itemPrefab: {fileID: 7546289402474254726, guid: d48640c7841bd4441abb6418d264cebe, type: 3}
+  amountOfItem: 10
   gameplayDataSo: {fileID: 11400000, guid: 8634da7b403f19b4d92c382e0227e1ae, type: 2}
 --- !u!1 &1352586249
 GameObject:

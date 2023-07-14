@@ -10,7 +10,8 @@ namespace PowTask.Gameplay.Enemy
         [SerializeField] private PlayerDataSO playerDataSo;
         [SerializeField] private GameplayDataSO gameplayDataSo;
         [SerializeField] private GameEvent onEarnGold;
-        [SerializeField] private GameObjectGenericGameEvent onEnemyDie;
+        public Action OnHealthOver;
+        
         private float _health;
 
         public void DecreaseHealth(float damage)
@@ -19,7 +20,7 @@ namespace PowTask.Gameplay.Enemy
             if (_health <= 0)
             {
                 EarnGold();
-                onEnemyDie.Raise(gameObject);
+                OnHealthOver.Invoke();
             }
         }
 

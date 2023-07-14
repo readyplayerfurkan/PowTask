@@ -37,6 +37,7 @@ namespace PowTask.Management
 
                 if (gameplayDataSo.remainTime <= 0)
                 {
+                    Debug.Log("OnGameWin is triggered.");
                     onGameWin.Raise();
                 }
                 gameplayDataSo.timer++;
