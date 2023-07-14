@@ -3,7 +3,7 @@ using UnityEngine;
 namespace PowTask.SaveLoadSystem
 {
     [System.Serializable]
-    public class SaveData : MonoBehaviour
+    public class SaveData
     {
         public PlayerData PlayerData = new PlayerData();
     }

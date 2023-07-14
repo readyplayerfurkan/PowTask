@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -363,7 +363,6 @@ GameObject:
   - component: {fileID: 70819567}
   - component: {fileID: 70819566}
   - component: {fileID: 70819565}
-  - component: {fileID: 70819573}
   m_Layer: 0
   m_Name: EnemyController
   m_TagString: Untagged
@@ -650,46 +649,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &70819573
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 70819564}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 354b2e7fe4d06634994d3464c2c0df4e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  genericGameEvent: {fileID: 11400000, guid: 1db80a8424ec73c4b9e0fbc0a0884c4a, type: 2}
-  response:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: -6835336815693679799, guid: 624036968860efe42b8ccacc979ac9ac, type: 3}
-        m_TargetAssemblyTypeName: PowTask.EnemyController, Assembly-CSharp
-        m_MethodName: Die
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 933921749413436130, guid: d48640c7841bd4441abb6418d264cebe, type: 3}
-        m_TargetAssemblyTypeName: PowTask.Gameplay.Enemy.EnemyMovementHandler, Assembly-CSharp
-        m_MethodName: OnEnemyDie
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &70819574
 MonoBehaviour:
   m_ObjectHideFlags: 0

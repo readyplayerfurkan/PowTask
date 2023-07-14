@@ -2,7 +2,6 @@ using System.Collections;
 using PowTask.ScriptableScripts;
 using UnityEngine;
 
-
 namespace PowTask.Gameplay.Player
 {
     public class PlayerAttackHandler : MonoBehaviour
