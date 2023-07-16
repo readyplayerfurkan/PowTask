@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 7950409665430032197}
   - component: {fileID: 2075644264048058927}
   - component: {fileID: 4324912163837951056}
-  - component: {fileID: -1917825701421912754}
   - component: {fileID: 2363459240799866327}
+  - component: {fileID: -1917825701421912754}
   - component: {fileID: -4657632369113209018}
   - component: {fileID: 1088707594658022261}
   - component: {fileID: -1304459258113078114}
@@ -102,21 +102,6 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &-1917825701421912754
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4499061205907149370}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 58b243a1b8f623d44963a9ecd1625699, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerDataSo: {fileID: 11400000, guid: 51d652e825736eb4ab7e31bfbd1a75ef, type: 2}
-  bulletRb: {fileID: 2363459240799866327}
-  rotationCoef: 0
 --- !u!54 &2363459240799866327
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -133,6 +118,21 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &-1917825701421912754
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4499061205907149370}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58b243a1b8f623d44963a9ecd1625699, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerDataSo: {fileID: 11400000, guid: 51d652e825736eb4ab7e31bfbd1a75ef, type: 2}
+  bulletRb: {fileID: 2363459240799866327}
+  rotationCoef: 0
 --- !u!114 &-4657632369113209018
 MonoBehaviour:
   m_ObjectHideFlags: 0

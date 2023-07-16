@@ -14,15 +14,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 4499061205907149370, guid: f286481dde606a645a8da867c8bbc3c5, type: 3}
   playerPrefab: {fileID: 8593393125543565400, guid: d90097bf5d2bd5c43ad2f649198a819a, type: 3}
-  bulletRotation: {x: 0, y: 0.7869883, z: 0, w: 0.6169679}
+  bulletRotation: {x: 0, y: 0.050831966, z: 0, w: 0.99870723}
   playerBaseHealth: 40
-  playerHealth: 0
-  damage: 1.4641001
+  playerHealth: 38
+  damage: 1
   damageConstant: 1
   fireInterval: 2
-  currentFireInterval: 1.3999999
+  currentFireInterval: 2
   bulletAmount: 1
-  currentBulletAmount: 4
-  isForthSkillActive: 1
-  goldAmount: 356
+  currentBulletAmount: 1
+  isForthSkillActive: 0
+  goldAmount: 0
   onPlayerHealthChange: {fileID: 11400000, guid: 8012b82863cc893489cc769dfde378fc, type: 2}

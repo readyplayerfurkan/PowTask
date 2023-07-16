@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace PowTask.Management.ObjectPooling
 {
-    public class EnemyStrongObjectPooling : ObjectPooling<GameObject>
+    public class EnemyWeakSpawner : ObjectPooling<GameObject>
     {
         [SerializeField] private GameplayDataSO gameplayDataSo;
 

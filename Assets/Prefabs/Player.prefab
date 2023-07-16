@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: 8593393125543565406}
   - component: {fileID: 8593393125543565405}
   - component: {fileID: 5779062838411746646}
-  - component: {fileID: 2589373632175029316}
+  - component: {fileID: 7699395257555321518}
   - component: {fileID: 9178333474853920750}
   - component: {fileID: 3855549591768217672}
   - component: {fileID: -6820670842574053769}
@@ -105,8 +105,6 @@ GameObject:
   - component: {fileID: -7714222878377158373}
   - component: {fileID: 515048927756285531}
   - component: {fileID: -5608432291005980194}
-  - component: {fileID: 2931733849898173668}
-  - component: {fileID: 5752679014439201401}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -210,7 +208,7 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &2589373632175029316
+--- !u!114 &7699395257555321518
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -219,11 +217,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 8593393125543565400}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5b61ae9ab287bf544957017cae819216, type: 3}
+  m_Script: {fileID: 11500000, guid: f631c6f4b46662e45a6d53846fd0068c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  itemPrefab: {fileID: 4499061205907149370, guid: f286481dde606a645a8da867c8bbc3c5, type: 3}
+  amountOfItem: 30
   playerDataSo: {fileID: 11400000, guid: 51d652e825736eb4ab7e31bfbd1a75ef, type: 2}
   firePoint: {fileID: 4201451066762797741}
+  bulletDamageController: {fileID: -4657632369113209018, guid: f286481dde606a645a8da867c8bbc3c5, type: 3}
 --- !u!114 &9178333474853920750
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -300,8 +301,8 @@ MonoBehaviour:
   response:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2589373632175029316}
-        m_TargetAssemblyTypeName: PowTask.Gameplay.Player.PlayerAttackHandler, Assembly-CSharp
+      - m_Target: {fileID: 7699395257555321518}
+        m_TargetAssemblyTypeName: PowTask.BulletSpawner, Assembly-CSharp
         m_MethodName: OnGameOver
         m_Mode: 1
         m_Arguments:
@@ -328,8 +329,8 @@ MonoBehaviour:
   response:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2589373632175029316}
-        m_TargetAssemblyTypeName: PowTask.Gameplay.Player.PlayerAttackHandler, Assembly-CSharp
+      - m_Target: {fileID: 7699395257555321518}
+        m_TargetAssemblyTypeName: PowTask.BulletSpawner, Assembly-CSharp
         m_MethodName: OnGameWin
         m_Mode: 1
         m_Arguments:
@@ -356,8 +357,8 @@ MonoBehaviour:
   response:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2589373632175029316}
-        m_TargetAssemblyTypeName: PowTask.Gameplay.Player.PlayerAttackHandler, Assembly-CSharp
+      - m_Target: {fileID: 7699395257555321518}
+        m_TargetAssemblyTypeName: PowTask.BulletSpawner, Assembly-CSharp
         m_MethodName: OnGameRestart
         m_Mode: 1
         m_Arguments:
@@ -384,8 +385,8 @@ MonoBehaviour:
   response:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2589373632175029316}
-        m_TargetAssemblyTypeName: PowTask.Gameplay.Player.PlayerAttackHandler, Assembly-CSharp
+      - m_Target: {fileID: 7699395257555321518}
+        m_TargetAssemblyTypeName: PowTask.BulletSpawner, Assembly-CSharp
         m_MethodName: OnGamePause
         m_Mode: 1
         m_Arguments:
@@ -412,67 +413,9 @@ MonoBehaviour:
   response:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2589373632175029316}
-        m_TargetAssemblyTypeName: PowTask.Gameplay.Player.PlayerAttackHandler, Assembly-CSharp
+      - m_Target: {fileID: 7699395257555321518}
+        m_TargetAssemblyTypeName: PowTask.BulletSpawner, Assembly-CSharp
         m_MethodName: OnGameUnpause
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!114 &2931733849898173668
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8593393125543565400}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ab38dc28c828bfe4385d076e4acaa6c8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameEvent: {fileID: 11400000, guid: 983014d755e9294408f658cd5a089c7e, type: 2}
-  response:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 3855549591768217672}
-        m_TargetAssemblyTypeName: PowTask.Gameplay.Player.PlayerHealthController,
-          Assembly-CSharp
-        m_MethodName: OnGameSaved
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!114 &5752679014439201401
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8593393125543565400}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ab38dc28c828bfe4385d076e4acaa6c8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameEvent: {fileID: 11400000, guid: fb091ea6e03fcaf479f8673847dcff65, type: 2}
-  response:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 3855549591768217672}
-        m_TargetAssemblyTypeName: PowTask.Gameplay.Player.PlayerHealthController,
-          Assembly-CSharp
-        m_MethodName: OnGameLoaded
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

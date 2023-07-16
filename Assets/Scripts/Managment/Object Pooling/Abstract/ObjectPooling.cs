@@ -34,14 +34,10 @@ namespace PowTask.Management.ObjectPooling
 
         protected void ReleaseAll()
         {
-            Debug.Log("İlk kontrol");
-            Debug.Log(_activeObjectPool.Count);
             if (_activeObjectPool.Count != 0)
             {
-                Debug.Log("İlk koşuldan geçildi.");
                 for (int i = 0; i < _activeObjectPool.Count; i++)
                 {
-                    Debug.Log("ReleaseAll is triggered.");
                     ReleaseItem(_activeObjectPool[i]);
                 }
             }
