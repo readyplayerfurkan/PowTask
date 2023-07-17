@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 4499061205907149370, guid: f286481dde606a645a8da867c8bbc3c5, type: 3}
   playerPrefab: {fileID: 8593393125543565400, guid: d90097bf5d2bd5c43ad2f649198a819a, type: 3}
-  bulletRotation: {x: 0, y: 0.050831966, z: 0, w: 0.99870723}
+  bulletRotation: {x: 0, y: 0.3079572, z: 0, w: 0.9514002}
   playerBaseHealth: 40
-  playerHealth: 38
+  playerHealth: 35
   damage: 1
   damageConstant: 1
   fireInterval: 2

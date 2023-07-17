@@ -1,3 +1,4 @@
+using System;
 using PowTask.ScriptableScripts;
 using UnityEngine;
 
@@ -26,11 +27,6 @@ namespace PowTask.Gameplay.Player
             bulletRb.AddForce(transform.forward * 2f, ForceMode.Impulse);
         }
 
-        private void OnEnable()
-        {
-             DestroyBullet();
-        }
-
         public void OnGamePause()
         {
             _tempVelocity = bulletRb.velocity;
@@ -41,10 +37,6 @@ namespace PowTask.Gameplay.Player
         {
             bulletRb.velocity = _tempVelocity;
         }
-
-        private void DestroyBullet()
-        {
-            Destroy(gameObject, 5);
-        }
+        
     }
 }

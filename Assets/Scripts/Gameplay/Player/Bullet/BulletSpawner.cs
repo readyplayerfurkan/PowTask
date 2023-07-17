@@ -1,18 +1,15 @@
-using System;
 using PowTask.Management.ObjectPooling;
 using System.Collections;
 using PowTask.ScriptableScripts;
 using UnityEngine;
-using PowTask.Gameplay.Player;
 
 namespace PowTask
 {
     public class BulletSpawner : ObjectPooling<GameObject>
     {
         [SerializeField] private PlayerDataSO playerDataSo;
-        private IEnumerator fireCoroutine;
+        private Coroutine _fireCoroutine;
         [SerializeField] private Transform firePoint;
-        [SerializeField] private BulletDamageController bulletDamageController;
 
         private void Start()
         {
@@ -21,39 +18,31 @@ namespace PowTask
             playerDataSo.Damage = playerDataSo.DamageConstant;
             playerDataSo.GoldAmount = 0;
             playerDataSo.IsForthSkillActive = false;
-            fireCoroutine = FireInterval();
-            StartCoroutine(fireCoroutine);
+            _fireCoroutine = StartCoroutine(FireInterval());
             ObjectPool();
-        }
-
-        private void OnEnable()
-        {
-            bulletDamageController.OnBulletCollide += OnBulletCollide;
-        }
-
-        private void OnDisable()
-        {
-            bulletDamageController.OnBulletCollide -= OnBulletCollide;
         }
 
         public void OnGameOver()
         {
-            StopCoroutine(fireCoroutine);
+            StopCoroutine(_fireCoroutine);
+            Debug.Log("Corotunie end.");
         }
         public void OnGameWin()
         {
-            StopCoroutine(fireCoroutine);
+            StopCoroutine(_fireCoroutine);
             playerDataSo.GoldAmount = 0;
+            Debug.Log("Corotunie end.");
         }
 
         public void OnGamePause()
         {
-            StopCoroutine(fireCoroutine);
+            StopCoroutine(_fireCoroutine);
+            Debug.Log("Corotunie end.");
         }
 
         public void OnGameUnpause()
         {
-            StartCoroutine(fireCoroutine);
+            StartCoroutine(FireInterval());
         }
 
         public void OnGameRestart()
@@ -63,13 +52,12 @@ namespace PowTask
             playerDataSo.Damage = playerDataSo.DamageConstant;
             playerDataSo.GoldAmount = 0;
             playerDataSo.IsForthSkillActive = false;
-            fireCoroutine = FireInterval();
-            StartCoroutine(fireCoroutine);
+            StartCoroutine(FireInterval());
         }
 
-        private void OnBulletCollide()
+        public void OnBulletCollide(GameObject bulletInstance)
         {
-            // ReleaseItem(_itemInstantiate);
+            ReleaseItem(bulletInstance);
         }
         
         private IEnumerator FireInterval()
@@ -78,6 +66,7 @@ namespace PowTask
             {
                 yield return new WaitForSeconds(playerDataSo.CurrentFireInterval);
                 yield return Fire();
+                StartCoroutine(FalseGameObject(_itemInstantiate, 7));
             }
         }
         

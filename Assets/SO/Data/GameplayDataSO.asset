@@ -12,13 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef29a8d98a0ef8547bc34e323077b1a3, type: 3}
   m_Name: GameplayDataSO
   m_EditorClassIdentifier: 
-  enemySpawnTime: 9.939999
+  enemySpawnTime: 9.719994
   spawnTimeConstant: 10
   spawnTimeDecreaseRate: 0.01
   enemyHealthChangeInterval: 1
-  remainTime: 8
-  gameTime: 11
-  timer: 3
+  remainTime: 166
+  gameTime: 180
+  timer: 14
   enemyHealthIncreaseInterval: 15
   enemyContainer: {fileID: 0}
   isGamePaused: 0

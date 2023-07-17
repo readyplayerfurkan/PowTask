@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -55,6 +56,21 @@ namespace PowTask.Management.ObjectPooling
         {
             T newItem = Instantiate(_itemInstantiate);
             return newItem;
+        }
+
+        protected IEnumerator FalseGameObject(T poolingObject, float time)
+        {
+            if (!_activeObjectPool.Contains(poolingObject))
+            {
+               yield return null;
+            }
+            else
+            {
+                yield return new WaitForSeconds(time);
+                poolingObject.GameObject().SetActive(false);
+                _activeObjectPool.Remove(poolingObject);
+                _passiveObjectPool.Enqueue(poolingObject);
+            }
         }
     }
 }

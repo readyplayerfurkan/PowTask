@@ -25,6 +25,7 @@ namespace PowTask
         public void Die()
         {
             enemyMovementHandler.ResetVelocity();
+            enemyMovementHandler.ResetPosition();
             onEnemyDied.Raise(gameObject);
         }
     }

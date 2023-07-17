@@ -96,7 +96,6 @@ GameObject:
   - component: {fileID: 8593393125543565406}
   - component: {fileID: 8593393125543565405}
   - component: {fileID: 5779062838411746646}
-  - component: {fileID: 7699395257555321518}
   - component: {fileID: 9178333474853920750}
   - component: {fileID: 3855549591768217672}
   - component: {fileID: -6820670842574053769}
@@ -208,23 +207,6 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &7699395257555321518
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8593393125543565400}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f631c6f4b46662e45a6d53846fd0068c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemPrefab: {fileID: 4499061205907149370, guid: f286481dde606a645a8da867c8bbc3c5, type: 3}
-  amountOfItem: 30
-  playerDataSo: {fileID: 11400000, guid: 51d652e825736eb4ab7e31bfbd1a75ef, type: 2}
-  firePoint: {fileID: 4201451066762797741}
-  bulletDamageController: {fileID: -4657632369113209018, guid: f286481dde606a645a8da867c8bbc3c5, type: 3}
 --- !u!114 &9178333474853920750
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -301,7 +283,7 @@ MonoBehaviour:
   response:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7699395257555321518}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PowTask.BulletSpawner, Assembly-CSharp
         m_MethodName: OnGameOver
         m_Mode: 1
@@ -329,7 +311,7 @@ MonoBehaviour:
   response:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7699395257555321518}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PowTask.BulletSpawner, Assembly-CSharp
         m_MethodName: OnGameWin
         m_Mode: 1
@@ -357,7 +339,7 @@ MonoBehaviour:
   response:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7699395257555321518}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PowTask.BulletSpawner, Assembly-CSharp
         m_MethodName: OnGameRestart
         m_Mode: 1
@@ -385,7 +367,7 @@ MonoBehaviour:
   response:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7699395257555321518}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PowTask.BulletSpawner, Assembly-CSharp
         m_MethodName: OnGamePause
         m_Mode: 1
@@ -413,7 +395,7 @@ MonoBehaviour:
   response:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7699395257555321518}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PowTask.BulletSpawner, Assembly-CSharp
         m_MethodName: OnGameUnpause
         m_Mode: 1

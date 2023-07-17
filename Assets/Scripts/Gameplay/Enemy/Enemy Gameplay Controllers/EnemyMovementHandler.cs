@@ -57,5 +57,10 @@ namespace PowTask.Gameplay.Enemy
         {
             enemyRb.velocity = Vector3.zero;
         }
+
+        public void ResetPosition()
+        {
+            enemyRb.transform.position = Vector3.zero;
+        }
     }
 }
