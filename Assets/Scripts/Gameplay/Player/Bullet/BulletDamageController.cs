@@ -7,13 +7,13 @@ namespace PowTask.Gameplay.Player
     public class BulletDamageController : MonoBehaviour
     {
         [SerializeField] private PlayerDataSO playerDataSo;
-        public GameObjectGenericGameEvent onBulletCollide;
+        public GameObjectGenericGameEvent onBulletDestroy;
         private void OnTriggerEnter(Collider other)
         {
             if (other.TryGetComponent<EnemyHealthController>(out var enemyHealthController))
             {
                 enemyHealthController.DecreaseHealth(playerDataSo.Damage);
-                onBulletCollide.Raise(gameObject);
+                onBulletDestroy.Raise(gameObject);
             }
         }
     }

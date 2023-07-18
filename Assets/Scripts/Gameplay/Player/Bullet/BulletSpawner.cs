@@ -25,19 +25,16 @@ namespace PowTask
         public void OnGameOver()
         {
             StopCoroutine(_fireCoroutine);
-            Debug.Log("Corotunie end.");
         }
         public void OnGameWin()
         {
             StopCoroutine(_fireCoroutine);
             playerDataSo.GoldAmount = 0;
-            Debug.Log("Corotunie end.");
         }
 
         public void OnGamePause()
         {
             StopCoroutine(_fireCoroutine);
-            Debug.Log("Corotunie end.");
         }
 
         public void OnGameUnpause()
@@ -55,7 +52,7 @@ namespace PowTask
             StartCoroutine(FireInterval());
         }
 
-        public void OnBulletCollide(GameObject bulletInstance)
+        public void OnBulletDestroy(GameObject bulletInstance)
         {
             ReleaseItem(bulletInstance);
         }
@@ -66,7 +63,6 @@ namespace PowTask
             {
                 yield return new WaitForSeconds(playerDataSo.CurrentFireInterval);
                 yield return Fire();
-                StartCoroutine(FalseGameObject(_itemInstantiate, 7));
             }
         }
         

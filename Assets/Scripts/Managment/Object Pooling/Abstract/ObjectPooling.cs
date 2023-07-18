@@ -54,7 +54,9 @@ namespace PowTask.Management.ObjectPooling
         
         protected T CreateItem()
         {
-            T newItem = Instantiate(_itemInstantiate);
+            Debug.Log("CreateItem methodu tetiklendi.");
+            T newItem = Instantiate(itemPrefab);
+            Debug.Log(newItem, newItem);
             return newItem;
         }
 
@@ -62,7 +64,7 @@ namespace PowTask.Management.ObjectPooling
         {
             if (!_activeObjectPool.Contains(poolingObject))
             {
-               yield return null;
+               yield break;
             }
             else
             {

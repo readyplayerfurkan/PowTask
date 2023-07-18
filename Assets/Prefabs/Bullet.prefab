@@ -133,6 +133,7 @@ MonoBehaviour:
   playerDataSo: {fileID: 11400000, guid: 51d652e825736eb4ab7e31bfbd1a75ef, type: 2}
   bulletRb: {fileID: 2363459240799866327}
   rotationCoef: 0
+  onBulletDestroy: {fileID: 11400000, guid: 2429539f94638f2449d1bd4039569fe3, type: 2}
 --- !u!114 &-4657632369113209018
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -146,7 +147,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerDataSo: {fileID: 11400000, guid: 51d652e825736eb4ab7e31bfbd1a75ef, type: 2}
-  onBulletCollide: {fileID: 11400000, guid: 09a428cbac256844bb295177cb47c159, type: 2}
+  onBulletDestroy: {fileID: 11400000, guid: 2429539f94638f2449d1bd4039569fe3, type: 2}
 --- !u!114 &1088707594658022261
 MonoBehaviour:
   m_ObjectHideFlags: 0

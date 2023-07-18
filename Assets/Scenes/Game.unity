@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3151,12 +3151,12 @@ GameObject:
   m_Component:
   - component: {fileID: 1023207627}
   - component: {fileID: 1023207628}
-  - component: {fileID: 1023207629}
   - component: {fileID: 1023207634}
   - component: {fileID: 1023207633}
   - component: {fileID: 1023207632}
   - component: {fileID: 1023207631}
   - component: {fileID: 1023207630}
+  - component: {fileID: 1023207635}
   m_Layer: 0
   m_Name: BulletObjectPooling
   m_TagString: Untagged
@@ -3192,37 +3192,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemPrefab: {fileID: 4499061205907149370, guid: f286481dde606a645a8da867c8bbc3c5, type: 3}
-  amountOfItem: 30
+  amountOfItem: 1
   playerDataSo: {fileID: 11400000, guid: 51d652e825736eb4ab7e31bfbd1a75ef, type: 2}
   firePoint: {fileID: 1226881141}
---- !u!114 &1023207629
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1023207626}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 354b2e7fe4d06634994d3464c2c0df4e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  genericGameEvent: {fileID: 11400000, guid: 09a428cbac256844bb295177cb47c159, type: 2}
-  response:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1023207628}
-        m_TargetAssemblyTypeName: PowTask.BulletSpawner, Assembly-CSharp
-        m_MethodName: OnBulletCollide
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &1023207630
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3355,6 +3327,34 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: PowTask.BulletSpawner, Assembly-CSharp
         m_MethodName: OnGameOver
         m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1023207635
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1023207626}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 354b2e7fe4d06634994d3464c2c0df4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  genericGameEvent: {fileID: 11400000, guid: 2429539f94638f2449d1bd4039569fe3, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1023207628}
+        m_TargetAssemblyTypeName: PowTask.BulletSpawner, Assembly-CSharp
+        m_MethodName: OnBulletDestroy
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine

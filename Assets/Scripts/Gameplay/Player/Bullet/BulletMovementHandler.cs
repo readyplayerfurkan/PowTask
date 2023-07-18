@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using PowTask.ScriptableScripts;
 using UnityEngine;
 
@@ -19,14 +20,25 @@ namespace PowTask.Gameplay.Player
         // Temp Data
         private Vector3 _tempVelocity;
         
-        void Start ()
+        // Game Event
+        [SerializeField] private GameObjectGenericGameEvent onBulletDestroy;
+
+        private void OnEnable()
         {
             Vector3 rotation = playerDataSo.BulletRotation.eulerAngles;
             rotation.y += rotationCoef;
             transform.rotation = Quaternion.Euler(rotation);
+            bulletRb.velocity = Vector3.zero;
             bulletRb.AddForce(transform.forward * 2f, ForceMode.Impulse);
+            StartCoroutine(BulletLifeTime());
         }
 
+        private IEnumerator BulletLifeTime()
+        {
+            yield return new WaitForSeconds(5f);
+            onBulletDestroy.Raise(gameObject);
+            yield break;
+        }
         public void OnGamePause()
         {
             _tempVelocity = bulletRb.velocity;
@@ -37,6 +49,5 @@ namespace PowTask.Gameplay.Player
         {
             bulletRb.velocity = _tempVelocity;
         }
-        
     }
 }
