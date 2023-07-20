@@ -1,4 +1,4 @@
-using PowTask.Management;
+using PowTask.Management.SceneManagement;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,27 +10,27 @@ namespace PowTask.UI.MainMenu
         [SerializeField] private Button exitButton;
         [SerializeField] private Button loadButton;
         
-        private SceneManagement sceneManagement;
+        private SceneManagement _sceneManagement;
 
-        void Start()
+        private void Start()
         {
-            sceneManagement = SceneManagement.Instance;
+            _sceneManagement = SceneManagement.Instance;
             startButton.onClick.AddListener(StartGame);
             loadButton.onClick.AddListener(LoadGame);
             exitButton.onClick.AddListener(ExitGame);
         }
 
-        void StartGame()
+        private void StartGame()
         {
-            sceneManagement.LoadScene(2);
+            _sceneManagement.LoadScene(2);
         }
 
-        void LoadGame()
+        private void LoadGame()
         {
             // Load Process
         }
 
-        void ExitGame()
+        private void ExitGame()
         {
             Application.Quit();
             Debug.Log("Quited.");

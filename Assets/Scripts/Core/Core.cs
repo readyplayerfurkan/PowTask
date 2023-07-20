@@ -1,7 +1,7 @@
-using System;
 using PowTask.Management;
 using System.Collections;
 using System.Collections.Generic;
+using PowTask.Management.SceneManagement;
 using UnityEngine;
 using TMPro;
 
@@ -10,8 +10,8 @@ namespace PowTask.Core
     public class Core : ManagementBase
     {
         [SerializeField] private TextMeshProUGUI loadingText;
-        [SerializeField] private List<ManagementBase> Managers;
-        private SceneManagement sceneManagement;
+        [SerializeField] private List<ManagementBase> managers;
+        private SceneManagement _sceneManagement;
 
         private void Awake()
         {
@@ -23,16 +23,15 @@ namespace PowTask.Core
             StartCoroutine(Init());
         }
 
-        public override IEnumerator InitProgress()
+        protected override IEnumerator InitProgress()
         {
-           foreach (var manager in Managers)
-            {
+           foreach (var manager in managers)
+           {
                 loadingText.text = manager.name + " Loading...";
                yield return manager.Init();
-            }
-           sceneManagement = SceneManagement.Instance;
-            sceneManagement.LoadScene(1);
+           }
+           _sceneManagement = SceneManagement.Instance;
+            _sceneManagement.LoadScene(1);
         }
-        
     }
 }

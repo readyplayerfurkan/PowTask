@@ -1,9 +1,8 @@
 using System.Collections;
-using PowTask.ScriptableScripts;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace PowTask.Management
+namespace PowTask.Management.SceneManagement
 {
     public class SceneManagement : ManagementBase
     {
@@ -20,7 +19,7 @@ namespace PowTask.Management
             Instance = this;
         }
 
-        public override IEnumerator InitProgress()
+        protected override IEnumerator InitProgress()
         {
             sceneType = SceneType.LoadingScene;
             yield return new WaitForSeconds(2f);

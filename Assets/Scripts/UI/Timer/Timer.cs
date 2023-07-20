@@ -2,7 +2,7 @@ using System.Collections;
 using PowTask.ScriptableScripts;
 using UnityEngine;
 
-namespace PowTask.Management
+namespace PowTask.UI.Timer
 {
     public class Timer : MonoBehaviour
     {
@@ -15,16 +15,14 @@ namespace PowTask.Management
         [SerializeField] private GameEvent onGameStart;
         
         // Variables
-        private IEnumerator currentTimeSequence;
+        private IEnumerator _currentTimeSequence;
 
         private void Start()
         {
-            Debug.LogError("Oyun başlatıldı.");
-
             gameplayDataSo.remainTime = gameplayDataSo.gameTime;
             gameplayDataSo.timer = 0;
-            currentTimeSequence = TimeCountdown();
-            StartCoroutine(currentTimeSequence);
+            _currentTimeSequence = TimeCountdown();
+            StartCoroutine(_currentTimeSequence);
         }
 
         IEnumerator TimeCountdown()
@@ -46,39 +44,40 @@ namespace PowTask.Management
             }
         }
 
+        #region Events
+
         public void OnGameWin()
         {
-            StopCoroutine(currentTimeSequence);
-            Debug.Log("Game is finished.");
+            StopCoroutine(_currentTimeSequence);
         }
 
         public void OnGameOver()
         {
-            StopCoroutine(currentTimeSequence);
-            Debug.Log("Game is finished.");
+            StopCoroutine(_currentTimeSequence);
         }
 
         public void OnGameRestart()
         {
             gameplayDataSo.remainTime = gameplayDataSo.gameTime;
             gameplayDataSo.timer = 0;
-            StartCoroutine(currentTimeSequence);
+            StartCoroutine(_currentTimeSequence);
         }
 
         public void OnGamePause()
         {
-            StopCoroutine(currentTimeSequence);
+            StopCoroutine(_currentTimeSequence);
         }
 
         public void OnGameUnpause()
         {
-            StartCoroutine(currentTimeSequence);
+            StartCoroutine(_currentTimeSequence);
         }
 
         public void OnSceneLoad()
         {
             onGameStart.Raise();
         }
-        
+
+        #endregion
     }
 }

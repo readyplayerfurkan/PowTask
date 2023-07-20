@@ -2,43 +2,43 @@ using PowTask.ScriptableScripts;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace PowTask.Gameplay.Player
+namespace PowTask.Gameplay.Player.Skill
 {
     public class FirstSkill : MonoBehaviour
     {
-        [SerializeField] private PasiveSkillDataSO pasiveSkillDataSo;
+        [SerializeField] private PasiveSkillDataSO passiveSkillDataSo;
         [SerializeField] private PlayerDataSO playerDataSo;
         [SerializeField] private GameEvent onSpendGold;
-        private Button skillButton;
+        private Button _skillButton;
 
         private void Awake()
         {
-            skillButton = GetComponent<Button>();
-            pasiveSkillDataSo.CurrentSkillLevel = 0;
-            skillButton.onClick.AddListener(IncreaseSkillLevel);
+            _skillButton = GetComponent<Button>();
+            passiveSkillDataSo.CurrentSkillLevel = 0;
+            _skillButton.onClick.AddListener(IncreaseSkillLevel);
         }
 
         public void OnGameRestart()
         {
-            pasiveSkillDataSo.CurrentSkillLevel = 0;
+            passiveSkillDataSo.CurrentSkillLevel = 0;
         }
 
         private void IncreaseSkillLevel()
         {
-            if (pasiveSkillDataSo.CurrentSkillLevel >= pasiveSkillDataSo.MaxSkillLevel) return;
+            if (passiveSkillDataSo.CurrentSkillLevel >= passiveSkillDataSo.MaxSkillLevel) return;
 
-            if (playerDataSo.GoldAmount > pasiveSkillDataSo.PriceList[pasiveSkillDataSo.CurrentSkillLevel])
+            if (playerDataSo.GoldAmount > passiveSkillDataSo.PriceList[passiveSkillDataSo.CurrentSkillLevel])
             {
                 SpendGold();
-                pasiveSkillDataSo.CurrentSkillLevel++;
+                passiveSkillDataSo.CurrentSkillLevel++;
                 UsePasiveSkill();
-                Debug.Log("First Skill level: " + pasiveSkillDataSo.CurrentSkillLevel);
+                Debug.Log("First Skill level: " + passiveSkillDataSo.CurrentSkillLevel);
             }
         }
 
         private void SpendGold()
         {
-            playerDataSo.GoldAmount -= pasiveSkillDataSo.PriceList[pasiveSkillDataSo.CurrentSkillLevel];
+            playerDataSo.GoldAmount -= passiveSkillDataSo.PriceList[passiveSkillDataSo.CurrentSkillLevel];
             onSpendGold.Raise();
         }
 
@@ -46,6 +46,5 @@ namespace PowTask.Gameplay.Player
         {
             playerDataSo.CurrentFireInterval -= 0.1f;
         }
-
     }
 }

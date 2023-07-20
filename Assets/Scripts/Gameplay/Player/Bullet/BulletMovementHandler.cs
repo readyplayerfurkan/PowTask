@@ -1,30 +1,21 @@
-using System;
 using System.Collections;
 using PowTask.ScriptableScripts;
 using UnityEngine;
 
-namespace PowTask.Gameplay.Player
+namespace PowTask.Gameplay.Player.Bullet
 {
     [RequireComponent(typeof(Rigidbody))]
     public class BulletMovementHandler : MonoBehaviour
     {
-        // SO
         [SerializeField] private PlayerDataSO playerDataSo;
-        
-        // Instances
         [SerializeField] private Rigidbody bulletRb;
-        
-        // Variables
+        [SerializeField] private GameObjectGenericGameEvent onBulletDestroy;
         public float rotationCoef;
-
-        // Temp Data
         private Vector3 _tempVelocity;
         
-        // Game Event
-        [SerializeField] private GameObjectGenericGameEvent onBulletDestroy;
-
-        private void OnEnable()
+        public void ChangeRotation(float coef)
         {
+            rotationCoef = coef;
             Vector3 rotation = playerDataSo.BulletRotation.eulerAngles;
             rotation.y += rotationCoef;
             transform.rotation = Quaternion.Euler(rotation);
@@ -39,6 +30,9 @@ namespace PowTask.Gameplay.Player
             onBulletDestroy.Raise(gameObject);
             yield break;
         }
+
+        #region Events
+
         public void OnGamePause()
         {
             _tempVelocity = bulletRb.velocity;
@@ -49,5 +43,7 @@ namespace PowTask.Gameplay.Player
         {
             bulletRb.velocity = _tempVelocity;
         }
+
+        #endregion
     }
 }

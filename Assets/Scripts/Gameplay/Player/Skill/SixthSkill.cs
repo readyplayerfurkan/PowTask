@@ -1,10 +1,9 @@
-using PowTask.Management;
 using PowTask.ScriptableScripts;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace PowTask.Gameplay.Player
+namespace PowTask.Gameplay.Player.Skill
 {
     public class SixthSkill : MonoBehaviour
     {
@@ -12,13 +11,13 @@ namespace PowTask.Gameplay.Player
         [SerializeField] private PlayerDataSO playerDataSo;
         [SerializeField] private GameEvent onSpendGold;
 
-        private Button skillButton;
-        private float currentFireInterval;
+        private Button _skillButton;
+        private float _currentFireInterval;
 
         private void Awake()
         {
-            skillButton = GetComponent<Button>();
-            skillButton.onClick.AddListener(ActiveSkill);
+            _skillButton = GetComponent<Button>();
+            _skillButton.onClick.AddListener(ActiveSkill);
         }
 
         private void ActiveSkill()
@@ -42,7 +41,7 @@ namespace PowTask.Gameplay.Player
 
         private void UseActiveSkill()
         {
-            currentFireInterval = playerDataSo.CurrentFireInterval;
+            _currentFireInterval = playerDataSo.CurrentFireInterval;
             playerDataSo.CurrentFireInterval = 0.1f;
         }
 
@@ -51,7 +50,7 @@ namespace PowTask.Gameplay.Player
             activeSkillDataSo.IsSkillOnCooldown = true;
             yield return new WaitForSeconds(activeSkillDataSo.CooldownTime);
             activeSkillDataSo.IsSkillOnCooldown = false;
-            playerDataSo.CurrentFireInterval = currentFireInterval;
+            playerDataSo.CurrentFireInterval = _currentFireInterval;
             yield return new WaitForSeconds(activeSkillDataSo.CooldownTime);
             yield break;
         }

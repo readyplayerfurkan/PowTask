@@ -35,13 +35,7 @@ namespace PowTask.UI.PauseMenu
         {
             onGameUnpaused.Raise();
         }
-
-        public void OnGameUnpaused()
-        {
-            pauseMenuPanel.SetActive(false);
-            gamePlayDataSo.isGamePaused = false;
-        }
-
+        
         private void SaveGame()
         {
             onGameSaved.Raise();
@@ -55,6 +49,12 @@ namespace PowTask.UI.PauseMenu
         private void ExitGame()
         {
             Application.Quit();
+        }
+        
+        public void OnGameUnpaused()
+        {
+            pauseMenuPanel.SetActive(false);
+            gamePlayDataSo.isGamePaused = false;
         }
     }
 }

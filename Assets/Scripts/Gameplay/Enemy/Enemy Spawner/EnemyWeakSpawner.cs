@@ -1,8 +1,10 @@
 using System.Collections;
+using PowTask.Management.ObjectPooling.Abstract;
+using PowTask.Management.SceneManagement;
 using PowTask.ScriptableScripts;
 using UnityEngine;
 
-namespace PowTask.Management.ObjectPooling
+namespace PowTask.Gameplay.Enemy.EnemySpawner
 {
     public class EnemyWeakSpawner : ObjectPooling<GameObject>
     {
@@ -21,45 +23,7 @@ namespace PowTask.Management.ObjectPooling
             StartCoroutine(_spawnCorotuine);
             ObjectPool();
         }
-        
-        public void OnGameOver()
-        {
-            StopCoroutine(_spawnCorotuine);
-            ReleaseAll();
-        }
 
-        public void OnGameWin()
-        {
-            StopCoroutine(_spawnCorotuine);
-            ReleaseAll();
-        }
-
-        public void OnGameRestart()
-        {
-            gameplayDataSo.enemySpawnTime = gameplayDataSo.spawnTimeConstant;
-            StartCoroutine(_spawnCorotuine);           
-        }
-
-        public void OnRemainingTimeChange()
-        {
-            gameplayDataSo.enemySpawnTime -= gameplayDataSo.spawnTimeDecreaseRate;
-        }
-
-        public void OnGamePause()
-        {
-            StopCoroutine(_spawnCorotuine);
-        }
-
-        public void OnGameUnpause()
-        {
-            StartCoroutine(_spawnCorotuine);
-        }
-
-        public void OnEnemyDied(GameObject poolingObject)
-        {
-            ReleaseItem(poolingObject);
-        }
-        
         private IEnumerator SpawnSequance()
         {
             yield return new WaitUntil(() => _sceneManager.sceneType == SceneType.Game);
@@ -98,8 +62,50 @@ namespace PowTask.Management.ObjectPooling
         
         private void SpawnEnemy(Vector3 randomPos)
         {
-            _itemInstantiate = GetItem();
-            _itemInstantiate.transform.position = randomPos;
+            itemInstantiate = GetItem();
+            itemInstantiate.transform.position = randomPos;
         }
+
+        #region Events
+
+        public void OnGameOver()
+        {
+            StopCoroutine(_spawnCorotuine);
+            ReleaseAll();
+        }
+
+        public void OnGameWin()
+        {
+            StopCoroutine(_spawnCorotuine);
+            ReleaseAll();
+        }
+
+        public void OnGameRestart()
+        {
+            gameplayDataSo.enemySpawnTime = gameplayDataSo.spawnTimeConstant;
+            StartCoroutine(_spawnCorotuine);           
+        }
+
+        public void OnRemainingTimeChange()
+        {
+            gameplayDataSo.enemySpawnTime -= gameplayDataSo.spawnTimeDecreaseRate;
+        }
+
+        public void OnGamePause()
+        {
+            StopCoroutine(_spawnCorotuine);
+        }
+
+        public void OnGameUnpause()
+        {
+            StartCoroutine(_spawnCorotuine);
+        }
+
+        public void OnEnemyDied(GameObject poolingObject)
+        {
+            ReleaseItem(poolingObject);
+        }
+
+        #endregion
     }
 }

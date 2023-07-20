@@ -1,9 +1,9 @@
-using PowTask.Management.ObjectPooling;
 using System.Collections;
+using PowTask.Management.ObjectPooling.Abstract;
 using PowTask.ScriptableScripts;
 using UnityEngine;
 
-namespace PowTask
+namespace PowTask.Gameplay.Player.Bullet
 {
     public class BulletSpawner : ObjectPooling<GameObject>
     {
@@ -21,6 +21,53 @@ namespace PowTask
             _fireCoroutine = StartCoroutine(FireInterval());
             ObjectPool();
         }
+
+        // ReSharper disable Unity.PerformanceAnalysis
+        private IEnumerator FireInterval()
+        {
+            while (true)
+            {
+                yield return new WaitForSeconds(playerDataSo.CurrentFireInterval);
+                yield return Fire();
+            }
+        }
+        
+        private IEnumerator Fire()
+        {
+            if (playerDataSo.IsForthSkillActive)
+            {
+                for (int i = 0; i < playerDataSo.CurrentBulletAmount; i++)
+                {
+                    // Burada bullet prefabı üzerinden poola yeni bir mermi atıyor. Attılan bu merminin bulletmovementhandler'ına ulaşılması ve coef değerinin o anlık değiştirilmesi gerekiyor.
+                    itemInstantiate = GetItem();
+                    itemInstantiate.transform.position = firePoint.transform.position;
+
+                    itemInstantiate = GetItem();
+                    itemInstantiate.transform.position = firePoint.transform.position;
+
+                    GameObject secondBullet = Instantiate(playerDataSo.BulletPrefab, firePoint.position, Quaternion.identity);
+                    BulletMovementHandler secondBulletMovementHandler = secondBullet.GetComponent<BulletMovementHandler>();
+                    secondBulletMovementHandler.rotationCoef = 30;
+                    
+                    GameObject thirdBullet = Instantiate(playerDataSo.BulletPrefab, firePoint.position, Quaternion.identity);
+                    BulletMovementHandler thirdBulletMovementHandler = thirdBullet.GetComponent<BulletMovementHandler>();
+                    thirdBulletMovementHandler.rotationCoef = -30;
+                    
+                    yield return new WaitForSeconds(0.1f);
+                }
+            }
+            else
+            {
+                for (int i = 0; i < playerDataSo.CurrentBulletAmount; i++)
+                {
+                    itemInstantiate = GetItem();
+                    itemInstantiate.transform.position = firePoint.transform.position;
+                    yield return new WaitForSeconds(0.1f);
+                }
+            }
+        }
+
+        #region Events
 
         public void OnGameOver()
         {
@@ -56,49 +103,7 @@ namespace PowTask
         {
             ReleaseItem(bulletInstance);
         }
-        
-        private IEnumerator FireInterval()
-        {
-            while (true)
-            {
-                yield return new WaitForSeconds(playerDataSo.CurrentFireInterval);
-                yield return Fire();
-            }
-        }
-        
-        private IEnumerator Fire()
-        {
-            if (playerDataSo.IsForthSkillActive)
-            {
-                for (int i = 0; i < playerDataSo.CurrentBulletAmount; i++)
-                {
-                    // GameObject firstBullet = GetItem();
-                    // firstBullet.transform.position = firePoint.position;
-                    //
-                    // GameObject secondBullet = GetItem();
-                    // secondBullet.transform.position = firePoint.position;
-                    //
-                    // GameObject thirdBullet = GetItem();
 
-                    // Instantiate(playerDataSo.BulletPrefab, firePoint.position, Quaternion.identity);
-                    // GameObject secondBullet = Instantiate(playerDataSo.BulletPrefab, firePoint.position, Quaternion.identity);
-                    // BulletMovementHandler secondBulletMovementHandler = secondBullet.GetComponent<BulletMovementHandler>();
-                    // secondBulletMovementHandler.rotationCoef = 30;
-                    // GameObject thirdBullet = Instantiate(playerDataSo.BulletPrefab, firePoint.position, Quaternion.identity);
-                    // BulletMovementHandler thirdBulletMovementHandler = thirdBullet.GetComponent<BulletMovementHandler>();
-                    // thirdBulletMovementHandler.rotationCoef = -30;
-                    // yield return new WaitForSeconds(0.1f);
-                }
-            }
-            else
-            {
-                for (int i = 0; i < playerDataSo.CurrentBulletAmount; i++)
-                {
-                    _itemInstantiate = GetItem();
-                    _itemInstantiate.transform.position = firePoint.transform.position;
-                    yield return new WaitForSeconds(0.1f);
-                }
-            }
-        }
+        #endregion
     }
 }

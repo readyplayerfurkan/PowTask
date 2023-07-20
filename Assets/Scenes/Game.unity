@@ -814,7 +814,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cddbf8689accac429b5e6183a1b2579, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pasiveSkillDataSo: {fileID: 11400000, guid: a1b5c881da7ffd94d931b8ea465e53b5, type: 2}
+  passiveSkillDataSo: {fileID: 11400000, guid: a1b5c881da7ffd94d931b8ea465e53b5, type: 2}
   playerDataSo: {fileID: 11400000, guid: 51d652e825736eb4ab7e31bfbd1a75ef, type: 2}
   onSpendGold: {fileID: 11400000, guid: 7df850d547a8c2843b840606cd9f9dee, type: 2}
 --- !u!114 &96201748
@@ -5085,7 +5085,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d108bda69d725548ae1a2b478c1be01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pasiveSkillDataSO: {fileID: 11400000, guid: bc050d175823c2241b02c38c2a9788a0, type: 2}
+  passiveSkillDataSo: {fileID: 11400000, guid: bc050d175823c2241b02c38c2a9788a0, type: 2}
   playerDataSo: {fileID: 11400000, guid: 51d652e825736eb4ab7e31bfbd1a75ef, type: 2}
   onSpendGold: {fileID: 11400000, guid: 7df850d547a8c2843b840606cd9f9dee, type: 2}
 --- !u!114 &1373642546
@@ -6442,7 +6442,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e369440719a9ac04d9fe0319fe3a90a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pasiveSkillDataSO: {fileID: 11400000, guid: 1c29d49667e09b746bc8ef721cde7054, type: 2}
+  passiveSkillDataSo: {fileID: 11400000, guid: 1c29d49667e09b746bc8ef721cde7054, type: 2}
   playerDataSo: {fileID: 11400000, guid: 51d652e825736eb4ab7e31bfbd1a75ef, type: 2}
   onSpendGold: {fileID: 11400000, guid: 7df850d547a8c2843b840606cd9f9dee, type: 2}
 --- !u!114 &1615246976
@@ -7228,7 +7228,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3409c57d89ae3249b67d675a21b6f9b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pasiveSkillDataSO: {fileID: 11400000, guid: f28454a191a604144aa4752a98fad96a, type: 2}
+  passiveSkillDataSo: {fileID: 11400000, guid: f28454a191a604144aa4752a98fad96a, type: 2}
   playerDataSo: {fileID: 11400000, guid: 51d652e825736eb4ab7e31bfbd1a75ef, type: 2}
   onSpendGold: {fileID: 11400000, guid: 7df850d547a8c2843b840606cd9f9dee, type: 2}
 --- !u!114 &2060297492

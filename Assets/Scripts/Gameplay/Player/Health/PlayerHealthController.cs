@@ -1,21 +1,20 @@
-using PowTask.SaveLoadSystem;
 using PowTask.ScriptableScripts;
 using UnityEngine;
 
-namespace PowTask.Gameplay.Player
+namespace PowTask.Gameplay.Player.Health
 {
     public class PlayerHealthController : MonoBehaviour
     {
         [SerializeField] private PlayerDataSO playerDataSo;
         [SerializeField] private GameEvent onGameOverEvent;
 
-        private PlayerData tempPlayerData = new PlayerData();
-        
         private void Start()
         {
             playerDataSo.PlayerHealth = playerDataSo.PlayerBaseHealth;
         }
-        
+
+        #region Events
+
         public void OnGameRestart()
         {
             playerDataSo.PlayerHealth = playerDataSo.PlayerBaseHealth;
@@ -31,17 +30,6 @@ namespace PowTask.Gameplay.Player
             }
         }
 
-        public void OnGameSaved()
-        {
-            tempPlayerData = SaveLoadManager.CurrentSaveData.PlayerData;
-            tempPlayerData.playerHealth = playerDataSo.PlayerHealth;
-            SaveLoadManager.SaveGame();
-        }
-
-        public void OnGameLoaded()
-        {
-            SaveLoadManager.LoadGame();
-            playerDataSo.PlayerHealth = tempPlayerData.playerHealth;
-        }
+        #endregion
     }
 }

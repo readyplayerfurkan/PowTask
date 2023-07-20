@@ -1,23 +1,22 @@
-using PowTask.Management;
 using PowTask.ScriptableScripts;
 using UnityEngine;
 
-namespace PowTask.Gameplay.Player
+namespace PowTask.Gameplay.Player.PlayerController
 {
     public class LookAtMouse : MonoBehaviour
     {
         [SerializeField] private PlayerDataSO playerDataSo;
-        private Collider[] hitColliders;
+        private Collider[] _hitColliders;
         [SerializeField] private float radius = 3f;
         [SerializeField] private LayerMask enemyLayer;
         
         void Update()
         {
-            hitColliders = Physics.OverlapSphere(transform.position, radius, enemyLayer);
+            _hitColliders = Physics.OverlapSphere(transform.position, radius, enemyLayer);
 
-            if (hitColliders.Length > 0)
+            if (_hitColliders.Length > 0)
             {
-                transform.LookAt(hitColliders[0].gameObject.transform);
+                transform.LookAt(_hitColliders[0].gameObject.transform);
                 playerDataSo.BulletRotation = transform.rotation;
             }
             else

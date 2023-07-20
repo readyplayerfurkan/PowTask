@@ -1,7 +1,7 @@
 using PowTask.ScriptableScripts;
 using UnityEngine;
 
-namespace PowTask.Gameplay.Enemy
+namespace PowTask.Gameplay.Enemy.EnemyController
 {
     public class EnemyMovementHandler : MonoBehaviour
     {
@@ -9,6 +9,7 @@ namespace PowTask.Gameplay.Enemy
         [SerializeField] private EnemyDataSO enemyDataSo;
         [SerializeField] private Rigidbody enemyRb;
         [SerializeField] private GameObject player;
+
         
         void Start()
         {
@@ -20,13 +21,25 @@ namespace PowTask.Gameplay.Enemy
             if (enemyDataSo.IsEnemyCanMove)
             {
                 Vector3 lookDirection = (player.transform.position - transform.position).normalized;
-                enemyRb.AddForce(lookDirection * enemyDataSo.EnemySpeed * Time.deltaTime);
+                enemyRb.AddForce(lookDirection * (enemyDataSo.EnemySpeed * Time.deltaTime));
             }
             else
             {
                 enemyRb.velocity = Vector3.zero;
             }
         }
+
+        public void ResetVelocity()
+        {
+            enemyRb.velocity = Vector3.zero;
+        }
+
+        public void ResetPosition()
+        {
+            enemyRb.transform.position = Vector3.zero;
+        }
+        
+        #region Events
 
         public void OnGameRestart()
         {
@@ -52,15 +65,7 @@ namespace PowTask.Gameplay.Enemy
         {
             enemyDataSo.IsEnemyCanMove = true;
         }
-
-        public void ResetVelocity()
-        {
-            enemyRb.velocity = Vector3.zero;
-        }
-
-        public void ResetPosition()
-        {
-            enemyRb.transform.position = Vector3.zero;
-        }
+        
+        #endregion
     }
 }

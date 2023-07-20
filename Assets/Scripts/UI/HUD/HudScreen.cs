@@ -1,10 +1,10 @@
 using UnityEngine;
 using TMPro;
-using PowTask.Management;
+using PowTask.Management.SceneManagement;
 using PowTask.ScriptableScripts;
 using UnityEngine.UI;
 
-namespace PowTask.UI
+namespace PowTask.UI.HUD
 {
     public class HudScreen : MonoBehaviour
     {
@@ -50,6 +50,25 @@ namespace PowTask.UI
             pauseButton.onClick.AddListener(PauseTheGame);
         }
 
+        private void PauseTheGame()
+        {
+            onGamePause.Raise();
+        }
+        private void RestartOn()
+        {
+            gameOverPanel.SetActive(false);
+            gameWinPanel.SetActive(false);
+            goldText.text = "Gold: 0";
+            onGameRestart.Raise();
+        }
+
+        private void SendBackToMainMenu()
+        {
+            _sceneManager.LoadScene(1);
+        }
+
+        #region Events
+
         public void OnEarnGold()
         {
             goldText.text = "Gold: " + playerDataSo.GoldAmount.ToString();
@@ -90,21 +109,6 @@ namespace PowTask.UI
             pauseMenuPanel.SetActive(true);
         }
 
-        private void PauseTheGame()
-        {
-            onGamePause.Raise();
-        }
-        private void RestartOn()
-        {
-            gameOverPanel.SetActive(false);
-            gameWinPanel.SetActive(false);
-            goldText.text = "Gold: 0";
-            onGameRestart.Raise();
-        }
-
-        private void SendBackToMainMenu()
-        {
-            _sceneManager.LoadScene(1);
-        }
+        #endregion
     }
 }

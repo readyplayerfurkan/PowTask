@@ -4,23 +4,23 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using Object = UnityEngine.Object;
 
-namespace PowTask.Management.ObjectPooling
+namespace PowTask.Management.ObjectPooling.Abstract
 {
     public abstract class ObjectPooling<T> : MonoBehaviour where T : Object 
     {
         [SerializeField] protected T itemPrefab;
         [SerializeField] protected int amountOfItem;
-        protected T _itemInstantiate;
-        protected Queue<T> _passiveObjectPool = new Queue<T>();
-        protected List<T> _activeObjectPool = new List<T>();
+        protected T itemInstantiate;
+        private readonly Queue<T> _passiveObjectPool = new Queue<T>();
+        private readonly List<T> _activeObjectPool = new List<T>();
 
         protected void ObjectPool()
         {
             for (int i = 0; i < amountOfItem; i++)
             {
-                _itemInstantiate = Instantiate(itemPrefab);
-                _itemInstantiate.GameObject().SetActive(false);
-                _passiveObjectPool.Enqueue(_itemInstantiate);
+                itemInstantiate = Instantiate(itemPrefab);
+                itemInstantiate.GameObject().SetActive(false);
+                _passiveObjectPool.Enqueue(itemInstantiate);
             }
         }
         
@@ -54,7 +54,6 @@ namespace PowTask.Management.ObjectPooling
         
         protected T CreateItem()
         {
-            Debug.Log("CreateItem methodu tetiklendi.");
             T newItem = Instantiate(itemPrefab);
             Debug.Log(newItem, newItem);
             return newItem;

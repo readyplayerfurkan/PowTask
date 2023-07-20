@@ -2,7 +2,7 @@ using System;
 using PowTask.ScriptableScripts;
 using UnityEngine;
 
-namespace PowTask.Gameplay.Enemy
+namespace PowTask.Gameplay.Enemy.EnemyHealth
 {
     public class EnemyHealthController : MonoBehaviour
     {
@@ -10,7 +10,7 @@ namespace PowTask.Gameplay.Enemy
         [SerializeField] private PlayerDataSO playerDataSo;
         [SerializeField] private GameplayDataSO gameplayDataSo;
         [SerializeField] private GameEvent onEarnGold;
-        public Action OnHealthOver;
+        public Action onHealthOver;
         private float _health;
 
         public void DecreaseHealth(float damage)
@@ -19,7 +19,7 @@ namespace PowTask.Gameplay.Enemy
             if (_health <= 0)
             {
                 EarnGold();
-                OnHealthOver.Invoke();
+                onHealthOver.Invoke();
             }
         }
 
@@ -28,6 +28,15 @@ namespace PowTask.Gameplay.Enemy
             enemyDataSo.EnemyHealth = enemyDataSo.EnemyGameTimeHealth;
             _health = enemyDataSo.EnemyHealth;
         }
+
+
+        private void EarnGold()
+        {
+            playerDataSo.GoldAmount += enemyDataSo.EnemyGoldAmount;
+            onEarnGold.Raise();
+        }
+        
+        #region Events
 
         public void OnGameStart()
         {
@@ -46,10 +55,6 @@ namespace PowTask.Gameplay.Enemy
             enemyDataSo.EnemyGameTimeHealth += gameplayDataSo.enemyHealthChangeInterval;
         }
 
-        private void EarnGold()
-        {
-            playerDataSo.GoldAmount += enemyDataSo.EnemyGoldAmount;
-            onEarnGold.Raise();
-        }
+        #endregion
     }
 }

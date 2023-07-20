@@ -1,10 +1,10 @@
-using PowTask.Gameplay.Enemy;
 using PowTask.ScriptableScripts;
 using System.Collections;
+using PowTask.Gameplay.Enemy.EnemyHealth;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace PowTask.Gameplay.Player
+namespace PowTask.Gameplay.Player.Skill
 {
     public class FifthSkill : MonoBehaviour
     {
@@ -13,12 +13,12 @@ namespace PowTask.Gameplay.Player
         [SerializeField] private PlayerDataSO playerDataSo;
         [SerializeField] private GameEvent onSpendGold;
         
-        private Button skillButton;
+        private Button _skillButton;
 
         private void Awake()
         {
-            skillButton = GetComponent<Button>();
-            skillButton.onClick.AddListener(ActiveSkill);
+            _skillButton = GetComponent<Button>();
+            _skillButton.onClick.AddListener(ActiveSkill);
         }
 
         private void ActiveSkill()
@@ -40,10 +40,8 @@ namespace PowTask.Gameplay.Player
             onSpendGold.Raise();
         }
         
-
         private void UseActiveSkill()
         {
-            Debug.Log("All active enemies are hits damage");
             foreach (Transform item in gameplayDataSo.enemyContainer)
             {
                 item.GetComponent<EnemyHealthController>().DecreaseHealth(playerDataSo.Damage);

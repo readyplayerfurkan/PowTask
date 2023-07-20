@@ -1,8 +1,8 @@
-using PowTask.Gameplay.Enemy;
+using PowTask.Gameplay.Enemy.EnemyHealth;
 using PowTask.ScriptableScripts;
 using UnityEngine;
 
-namespace PowTask.Gameplay.Player
+namespace PowTask.Gameplay.Player.Bullet
 {
     public class BulletDamageController : MonoBehaviour
     {

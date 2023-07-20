@@ -5,8 +5,9 @@ namespace PowTask.Management
 {
     public abstract class ManagementBase : MonoBehaviour
     {
-        public abstract IEnumerator InitProgress();
+        protected abstract IEnumerator InitProgress();
         
+        // ReSharper disable Unity.PerformanceAnalysis
         public IEnumerator Init()
         {
             yield return InitProgress();

@@ -1,7 +1,7 @@
-using PowTask.Gameplay.Enemy;
+using PowTask.Gameplay.Enemy.EnemyHealth;
 using UnityEngine;
 
-namespace PowTask
+namespace PowTask.Gameplay.Enemy.EnemyController
 {
     public class EnemyController : MonoBehaviour
     {
@@ -12,17 +12,17 @@ namespace PowTask
 
         private void OnEnable()
         {
-            enemyHealthController.OnHealthOver += Die;
-            enemyAttackHandler.OnHealthOver += Die;
+            enemyHealthController.onHealthOver += Die;
+            enemyAttackHandler.onHealthOver += Die;
         }
 
         private void OnDisable()
         {
-            enemyHealthController.OnHealthOver -= Die;
-            enemyAttackHandler.OnHealthOver -= Die;
+            enemyHealthController.onHealthOver -= Die;
+            enemyAttackHandler.onHealthOver -= Die;
         }
 
-        public void Die()
+        private void Die()
         {
             enemyMovementHandler.ResetVelocity();
             enemyMovementHandler.ResetPosition();
