@@ -11,6 +11,7 @@ namespace PowTask.Gameplay.Player.Bullet
         private Coroutine _fireCoroutine;
         [SerializeField] private Transform firePoint;
 
+
         private void Start()
         {
             playerDataSo.CurrentFireInterval = playerDataSo.FireInterval;
@@ -18,6 +19,7 @@ namespace PowTask.Gameplay.Player.Bullet
             playerDataSo.Damage = playerDataSo.DamageConstant;
             playerDataSo.GoldAmount = 0;
             playerDataSo.IsForthSkillActive = false;
+            playerDataSo.IsPlayerCanShoot = true;
             _fireCoroutine = StartCoroutine(FireInterval());
             ObjectPool();
         }
@@ -25,7 +27,7 @@ namespace PowTask.Gameplay.Player.Bullet
         // ReSharper disable Unity.PerformanceAnalysis
         private IEnumerator FireInterval()
         {
-            while (true)
+            while (playerDataSo.IsPlayerCanShoot)
             {
                 yield return new WaitForSeconds(playerDataSo.CurrentFireInterval);
                 
@@ -56,14 +58,6 @@ namespace PowTask.Gameplay.Player.Bullet
                 itemInstantiate = GetItem();
                 itemInstantiate.transform.position = firePoint.transform.position;
 
-                // GameObject secondBullet = Instantiate(playerDataSo.BulletPrefab, firePoint.position, Quaternion.identity);
-                // BulletMovementHandler secondBulletMovementHandler = secondBullet.GetComponent<BulletMovementHandler>();
-                // secondBulletMovementHandler.rotationCoef = 30;
-                //
-                // GameObject thirdBullet = Instantiate(playerDataSo.BulletPrefab, firePoint.position, Quaternion.identity);
-                // BulletMovementHandler thirdBulletMovementHandler = thirdBullet.GetComponent<BulletMovementHandler>();
-                // thirdBulletMovementHandler.rotationCoef = -30;
-
                 yield return new WaitForSeconds(0.1f);
             }
         }
@@ -84,21 +78,25 @@ namespace PowTask.Gameplay.Player.Bullet
 
         public void OnGameOver()
         {
+            playerDataSo.IsPlayerCanShoot = false;
             StopCoroutine(_fireCoroutine);
         }
         public void OnGameWin()
         {
+            playerDataSo.IsPlayerCanShoot = false;
             StopCoroutine(_fireCoroutine);
             playerDataSo.GoldAmount = 0;
         }
 
         public void OnGamePause()
         {
+            playerDataSo.IsPlayerCanShoot = false;
             StopCoroutine(_fireCoroutine);
         }
 
         public void OnGameUnpause()
         {
+            playerDataSo.IsPlayerCanShoot = true;
             StartCoroutine(FireInterval());
         }
 
@@ -108,6 +106,7 @@ namespace PowTask.Gameplay.Player.Bullet
             playerDataSo.CurrentBulletAmount = playerDataSo.BulletAmount;
             playerDataSo.Damage = playerDataSo.DamageConstant;
             playerDataSo.GoldAmount = 0;
+            playerDataSo.IsPlayerCanShoot = true;
             playerDataSo.IsForthSkillActive = false;
             StartCoroutine(FireInterval());
         }
