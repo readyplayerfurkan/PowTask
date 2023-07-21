@@ -10,6 +10,7 @@ namespace PowTask.ScriptableScripts
     {
         // Values Of Scriptable Object
        [SerializeField] private GameObject bulletPrefab;
+       [SerializeField] private float rotationCoef;
        [SerializeField] private GameObject playerPrefab;
        [SerializeField] private Quaternion bulletRotation;
        [SerializeField] private int playerBaseHealth;
@@ -23,10 +24,17 @@ namespace PowTask.ScriptableScripts
        [SerializeField] private bool isForthSkillActive;
        [SerializeField] private int goldAmount;
        
-        
-        // Events
+       // Events
         [SerializeField] private GameEvent onPlayerHealthChange;
 
+        #region Properties
+
+        public float RotationCoef
+        {
+            get => rotationCoef;
+            set => rotationCoef = value;
+        }
+        
         public int PlayerHealth
         {
             get => playerHealth;
@@ -103,6 +111,7 @@ namespace PowTask.ScriptableScripts
             get => goldAmount;
             set => goldAmount = value;
         }
-        
+
+        #endregion
     }
 }

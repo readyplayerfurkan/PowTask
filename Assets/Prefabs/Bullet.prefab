@@ -17,6 +17,8 @@ GameObject:
   - component: {fileID: -4657632369113209018}
   - component: {fileID: 1088707594658022261}
   - component: {fileID: -1304459258113078114}
+  - component: {fileID: 4343208993502066966}
+  - component: {fileID: 969533452967634813}
   m_Layer: 0
   m_Name: Bullet
   m_TagString: Untagged
@@ -132,7 +134,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerDataSo: {fileID: 11400000, guid: 51d652e825736eb4ab7e31bfbd1a75ef, type: 2}
   bulletRb: {fileID: 2363459240799866327}
-  rotationCoef: 0
   onBulletDestroy: {fileID: 11400000, guid: 2429539f94638f2449d1bd4039569fe3, type: 2}
 --- !u!114 &-4657632369113209018
 MonoBehaviour:
@@ -197,6 +198,64 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: PowTask.Gameplay.Player.BulletMovementHandler,
           Assembly-CSharp
         m_MethodName: OnGameUnpause
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &4343208993502066966
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4499061205907149370}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab38dc28c828bfe4385d076e4acaa6c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: d92cbe352bcd2f54988e58185c1807ee, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: -1917825701421912754}
+        m_TargetAssemblyTypeName: PowTask.Gameplay.Player.Bullet.BulletMovementHandler,
+          Assembly-CSharp
+        m_MethodName: OnGameRestart
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &969533452967634813
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4499061205907149370}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab38dc28c828bfe4385d076e4acaa6c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: 721e12e185d191d4ea0d5d253f266be7, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: -1917825701421912754}
+        m_TargetAssemblyTypeName: PowTask.Gameplay.Player.Bullet.BulletMovementHandler,
+          Assembly-CSharp
+        m_MethodName: OnGameRestart
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

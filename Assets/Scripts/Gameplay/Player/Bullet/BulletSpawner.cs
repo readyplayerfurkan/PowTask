@@ -28,42 +28,55 @@ namespace PowTask.Gameplay.Player.Bullet
             while (true)
             {
                 yield return new WaitForSeconds(playerDataSo.CurrentFireInterval);
-                yield return Fire();
+                
+                if (playerDataSo.IsForthSkillActive)
+                {
+                    yield return FireSpecial();
+                }
+                else
+                {
+                    yield return FireDefault();
+                }
+            }
+        }
+
+        private IEnumerator FireSpecial()
+        {
+            for (int i = 0; i < playerDataSo.CurrentBulletAmount; i++)
+            {
+                playerDataSo.RotationCoef = 0;
+                itemInstantiate = GetItem();
+                itemInstantiate.transform.position = firePoint.transform.position;
+
+                playerDataSo.RotationCoef = 30;
+                itemInstantiate = GetItem();
+                itemInstantiate.transform.position = firePoint.transform.position;
+
+                playerDataSo.RotationCoef = -30;
+                itemInstantiate = GetItem();
+                itemInstantiate.transform.position = firePoint.transform.position;
+
+                // GameObject secondBullet = Instantiate(playerDataSo.BulletPrefab, firePoint.position, Quaternion.identity);
+                // BulletMovementHandler secondBulletMovementHandler = secondBullet.GetComponent<BulletMovementHandler>();
+                // secondBulletMovementHandler.rotationCoef = 30;
+                //
+                // GameObject thirdBullet = Instantiate(playerDataSo.BulletPrefab, firePoint.position, Quaternion.identity);
+                // BulletMovementHandler thirdBulletMovementHandler = thirdBullet.GetComponent<BulletMovementHandler>();
+                // thirdBulletMovementHandler.rotationCoef = -30;
+
+                yield return new WaitForSeconds(0.1f);
             }
         }
         
-        private IEnumerator Fire()
+        private IEnumerator FireDefault()
         {
-            if (playerDataSo.IsForthSkillActive)
+            if (playerDataSo.IsForthSkillActive) yield break;
+            
+            for (int i = 0; i < playerDataSo.CurrentBulletAmount; i++)
             {
-                for (int i = 0; i < playerDataSo.CurrentBulletAmount; i++)
-                {
-                    // Burada bullet prefabı üzerinden poola yeni bir mermi atıyor. Attılan bu merminin bulletmovementhandler'ına ulaşılması ve coef değerinin o anlık değiştirilmesi gerekiyor.
-                    itemInstantiate = GetItem();
-                    itemInstantiate.transform.position = firePoint.transform.position;
-
-                    itemInstantiate = GetItem();
-                    itemInstantiate.transform.position = firePoint.transform.position;
-
-                    GameObject secondBullet = Instantiate(playerDataSo.BulletPrefab, firePoint.position, Quaternion.identity);
-                    BulletMovementHandler secondBulletMovementHandler = secondBullet.GetComponent<BulletMovementHandler>();
-                    secondBulletMovementHandler.rotationCoef = 30;
-                    
-                    GameObject thirdBullet = Instantiate(playerDataSo.BulletPrefab, firePoint.position, Quaternion.identity);
-                    BulletMovementHandler thirdBulletMovementHandler = thirdBullet.GetComponent<BulletMovementHandler>();
-                    thirdBulletMovementHandler.rotationCoef = -30;
-                    
-                    yield return new WaitForSeconds(0.1f);
-                }
-            }
-            else
-            {
-                for (int i = 0; i < playerDataSo.CurrentBulletAmount; i++)
-                {
-                    itemInstantiate = GetItem();
-                    itemInstantiate.transform.position = firePoint.transform.position;
-                    yield return new WaitForSeconds(0.1f);
-                }
+                itemInstantiate = GetItem();
+                itemInstantiate.transform.position = firePoint.transform.position;
+                yield return new WaitForSeconds(0.1f);
             }
         }
 
@@ -107,3 +120,4 @@ namespace PowTask.Gameplay.Player.Bullet
         #endregion
     }
 }
+

@@ -10,14 +10,12 @@ namespace PowTask.Gameplay.Player.Bullet
         [SerializeField] private PlayerDataSO playerDataSo;
         [SerializeField] private Rigidbody bulletRb;
         [SerializeField] private GameObjectGenericGameEvent onBulletDestroy;
-        public float rotationCoef;
         private Vector3 _tempVelocity;
         
-        public void ChangeRotation(float coef)
+        private void OnEnable()
         {
-            rotationCoef = coef;
             Vector3 rotation = playerDataSo.BulletRotation.eulerAngles;
-            rotation.y += rotationCoef;
+            rotation.y += playerDataSo.RotationCoef;
             transform.rotation = Quaternion.Euler(rotation);
             bulletRb.velocity = Vector3.zero;
             bulletRb.AddForce(transform.forward * 2f, ForceMode.Impulse);
@@ -33,6 +31,16 @@ namespace PowTask.Gameplay.Player.Bullet
 
         #region Events
 
+        public void OnGameStart()
+        {
+            playerDataSo.RotationCoef = 0;
+        }
+
+        public void OnGameRestart()
+        {
+            playerDataSo.RotationCoef = 0;
+        }
+        
         public void OnGamePause()
         {
             _tempVelocity = bulletRb.velocity;
