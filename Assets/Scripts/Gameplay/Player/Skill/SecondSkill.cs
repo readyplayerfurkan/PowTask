@@ -30,9 +30,9 @@ namespace PowTask.Gameplay.Player.Skill
 
             if (playerDataSo.GoldAmount > passiveSkillDataSo.PriceList[passiveSkillDataSo.CurrentSkillLevel])
             {
-                passiveSkillDataSo.CurrentSkillLevel++;
                 SpendGold();
                 UsePassiveSkill();
+                passiveSkillDataSo.CurrentSkillLevel++;
                 Debug.Log("Second Skill level: " + passiveSkillDataSo.CurrentSkillLevel);
             }
         }
