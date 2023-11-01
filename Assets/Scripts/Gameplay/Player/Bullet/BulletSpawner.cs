@@ -10,8 +10,7 @@ namespace PowTask.Gameplay.Player.Bullet
         [SerializeField] private PlayerDataSO playerDataSo;
         private Coroutine _fireCoroutine;
         [SerializeField] private Transform firePoint;
-
-
+        
         private void Start()
         {
             playerDataSo.CurrentFireInterval = playerDataSo.FireInterval;
@@ -23,8 +22,7 @@ namespace PowTask.Gameplay.Player.Bullet
             _fireCoroutine = StartCoroutine(FireInterval());
             ObjectPool();
         }
-
-        // ReSharper disable Unity.PerformanceAnalysis
+        
         private IEnumerator FireInterval()
         {
             while (playerDataSo.IsPlayerCanShoot)

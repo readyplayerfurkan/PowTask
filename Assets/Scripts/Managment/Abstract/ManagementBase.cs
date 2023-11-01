@@ -7,7 +7,6 @@ namespace PowTask.Management
     {
         protected abstract IEnumerator InitProgress();
         
-        // ReSharper disable Unity.PerformanceAnalysis
         public IEnumerator Init()
         {
             yield return InitProgress();
